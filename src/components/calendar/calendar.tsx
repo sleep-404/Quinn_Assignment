@@ -1,12 +1,6 @@
 import moment from "moment";
 import "./styles.css";
 
-var arr = [...Array(100).keys()].map((x) => ++x);
-
-const loadFunc = () => {
-  return [...Array(100).keys()].map((x) => ++x);
-};
-
 const Calendar = () => {
   const value = moment();
   const startDay = value.clone().startOf("month").startOf("week");
@@ -22,11 +16,20 @@ const Calendar = () => {
   }
   return (
       <div className="calendar">
+          {value.format("MMMM Y")}
+        <div className="day-names">
+          {
+            ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(d => 
+            <div className="week" key={d}>{d}</div> )
+          }
+        </div>
         {calendar.map((week) => (
           // To hide a stupid unique key warning
             <div key={week}> 
                 {week.map((day) => (
-                    <div className="day" key={day.format("DM").toString()}>{day.format("D")}</div>
+                    <div className="day" key={day.format("DM").toString()}>
+                      { day.format("M") === value.format("M") ? day.format("D") : day.format("D MMM")}
+                    </div>
                 ))}
             </div>
         ))}
