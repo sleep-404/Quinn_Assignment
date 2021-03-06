@@ -15,7 +15,9 @@ const Month = ({value}) => {
   }
   return (
       <div className="calendar">
+        <div className="month-name">
           {value.format("MMMM Y")}
+        </div>
         <div className="day-names">
           {
             ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(d => 
