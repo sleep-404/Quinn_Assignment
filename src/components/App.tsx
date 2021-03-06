@@ -1,17 +1,15 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-import Calendar from "./calendar/calendar";
+import Calendar from "./calendar/Calendar";
+import moment from "moment";
+import { setConstantValue } from "typescript";
 
-class App extends React.Component<Record<string, unknown>, undefined> {
-  public render() {
+const App = () => {
     return (
       <div className="app">
         <Calendar/>
       </div>
     );
-  }
 }
-
-declare let module: Record<string, unknown>;
 
 export default hot(module)(App);

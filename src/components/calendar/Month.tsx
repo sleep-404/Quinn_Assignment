@@ -1,14 +1,13 @@
 import moment from "moment";
 import "./styles.css";
 
-const Calendar = () => {
-  const value = moment();
+const Month = ({value}) => {
   const startDay = value.clone().startOf("month").startOf("week");
   const endDay = value.clone().endOf("month").endOf("week");
   const day = startDay.clone().subtract(1, "day");
-  const calendar = [];
+  const month = [];
   while (day.isBefore(endDay, "day")) {
-    calendar.push(
+    month.push(
       Array(7)
         .fill(0)
         .map(() => day.add(1, "day").clone())
@@ -23,7 +22,7 @@ const Calendar = () => {
             <div className="week" key={d}>{d}</div> )
           }
         </div>
-        {calendar.map((week) => (
+        {month.map((week) => (
           // To hide a stupid unique key warning
             <div key={week}> 
                 {week.map((day) => (
@@ -37,4 +36,4 @@ const Calendar = () => {
   )
 };
 
-export default Calendar;
+export default Month;
